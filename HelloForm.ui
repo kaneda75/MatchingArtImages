@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>390</width>
-    <height>94</height>
+    <width>386</width>
+    <height>193</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -44,6 +44,85 @@
    </property>
    <property name="text">
     <string>Enter the name below:</string>
+   </property>
+  </widget>
+  <widget class="QComboBox" name="comboBoxDetectorType">
+   <property name="geometry">
+    <rect>
+     <x>160</x>
+     <y>90</y>
+     <width>111</width>
+     <height>26</height>
+    </rect>
+   </property>
+   <item>
+    <property name="text">
+     <string>SURF</string>
+    </property>
+   </item>
+   <item>
+    <property name="text">
+     <string>SIFT</string>
+    </property>
+   </item>
+  </widget>
+  <widget class="QComboBox" name="comboBoxDescriptorType">
+   <property name="geometry">
+    <rect>
+     <x>160</x>
+     <y>120</y>
+     <width>111</width>
+     <height>26</height>
+    </rect>
+   </property>
+   <item>
+    <property name="text">
+     <string>SURF</string>
+    </property>
+   </item>
+   <item>
+    <property name="text">
+     <string>SIFT</string>
+    </property>
+   </item>
+  </widget>
+  <widget class="QLabel" name="label_2">
+   <property name="geometry">
+    <rect>
+     <x>21</x>
+     <y>96</y>
+     <width>141</width>
+     <height>16</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>Tipus de detector</string>
+   </property>
+  </widget>
+  <widget class="QLabel" name="label_3">
+   <property name="geometry">
+    <rect>
+     <x>20</x>
+     <y>122</y>
+     <width>141</width>
+     <height>20</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>Tipus de descriptor</string>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="pushButton">
+   <property name="geometry">
+    <rect>
+     <x>260</x>
+     <y>160</y>
+     <width>114</width>
+     <height>32</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>Matching</string>
    </property>
   </widget>
  </widget>

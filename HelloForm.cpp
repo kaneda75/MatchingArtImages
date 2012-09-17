@@ -22,3 +22,8 @@ void HelloForm::textChanged(const QString& text) {
         widget.helloEdit->clear();
     }
 }
+
+void HelloForm::on_pushButton_clicked()
+{
+        widget.helloEdit->setText(widget.comboBoxDetectorType->currentText());
+}

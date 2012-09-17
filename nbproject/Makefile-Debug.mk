@@ -52,7 +52,7 @@ FFLAGS=
 ASFLAGS=
 
 # Link Libraries and Options
-LDLIBSOPTIONS=-I/usr/local/include/opencv -L/usr/local/lib -lopencv_core -lopencv_objdetect -lopencv_highgui -lopencv_features2d -lopencv_legacy -lopencv_imgproc -lopencv_contrib -lopencv_nonfree
+LDLIBSOPTIONS=-L/usr/local/include/opencv -L/usr/local/lib -L/opt/local/lib -lopencv_core -lopencv_objdetect -lopencv_highgui -lopencv_features2d -lopencv_legacy -lopencv_imgproc -lopencv_contrib -lopencv_nonfree
 
 nbproject/qt-${CND_CONF}.mk: nbproject/qt-${CND_CONF}.pro FORCE
 	${QMAKE} VPATH=. -spec macx-g++ -o qttmp-${CND_CONF}.mk nbproject/qt-${CND_CONF}.pro
@@ -62,7 +62,7 @@ FORCE:
 
 # Build Targets
 .build-conf: ${BUILD_SUBPROJECTS} nbproject/qt-${CND_CONF}.mk
-	"${MAKE}" -f nbproject/qt-${CND_CONF}.mk ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/QtApplication_1
+	"${MAKE}" -f nbproject/qt-${CND_CONF}.mk ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/MatchingArtImages
 
 ${CND_BUILDDIR}/Debug/%.o: nbproject/qt-${CND_CONF}.mk
 	${MAKE} -f nbproject/qt-${CND_CONF}.mk "$@"

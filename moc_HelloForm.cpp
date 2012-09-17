@@ -1,15 +1,15 @@
 /****************************************************************************
-** Meta object code from reading C++ file 'formulari.h'
+** Meta object code from reading C++ file 'HelloForm.h'
 **
-** Created: Sun Sep 16 19:56:54 2012
+** Created: Mon Sep 17 12:05:44 2012
 **      by: The Qt Meta Object Compiler version 62 (Qt 4.7.4)
 **
 ** WARNING! All changes made in this file will be lost!
 *****************************************************************************/
 
-#include "formulari.h"
+#include "HelloForm.h"
 #if !defined(Q_MOC_OUTPUT_REVISION)
-#error "The header file 'formulari.h' doesn't include <QObject>."
+#error "The header file 'HelloForm.h' doesn't include <QObject>."
 #elif Q_MOC_OUTPUT_REVISION != 62
 #error "This file was generated using the moc from 4.7.4. It"
 #error "cannot be used with the include files from this version of Qt."
@@ -17,7 +17,7 @@
 #endif
 
 QT_BEGIN_MOC_NAMESPACE
-static const uint qt_meta_data_formulari[] = {
+static const uint qt_meta_data_HelloForm[] = {
 
  // content:
        5,       // revision
@@ -33,33 +33,33 @@ static const uint qt_meta_data_formulari[] = {
        0        // eod
 };
 
-static const char qt_meta_stringdata_formulari[] = {
-    "formulari\0"
+static const char qt_meta_stringdata_HelloForm[] = {
+    "HelloForm\0"
 };
 
-const QMetaObject formulari::staticMetaObject = {
-    { &QDialog::staticMetaObject, qt_meta_stringdata_formulari,
-      qt_meta_data_formulari, 0 }
+const QMetaObject HelloForm::staticMetaObject = {
+    { &QDialog::staticMetaObject, qt_meta_stringdata_HelloForm,
+      qt_meta_data_HelloForm, 0 }
 };
 
 #ifdef Q_NO_DATA_RELOCATION
-const QMetaObject &formulari::getStaticMetaObject() { return staticMetaObject; }
+const QMetaObject &HelloForm::getStaticMetaObject() { return staticMetaObject; }
 #endif //Q_NO_DATA_RELOCATION
 
-const QMetaObject *formulari::metaObject() const
+const QMetaObject *HelloForm::metaObject() const
 {
     return QObject::d_ptr->metaObject ? QObject::d_ptr->metaObject : &staticMetaObject;
 }
 
-void *formulari::qt_metacast(const char *_clname)
+void *HelloForm::qt_metacast(const char *_clname)
 {
     if (!_clname) return 0;
-    if (!strcmp(_clname, qt_meta_stringdata_formulari))
-        return static_cast<void*>(const_cast< formulari*>(this));
+    if (!strcmp(_clname, qt_meta_stringdata_HelloForm))
+        return static_cast<void*>(const_cast< HelloForm*>(this));
     return QDialog::qt_metacast(_clname);
 }
 
-int formulari::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
+int HelloForm::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
 {
     _id = QDialog::qt_metacall(_c, _id, _a);
     if (_id < 0)

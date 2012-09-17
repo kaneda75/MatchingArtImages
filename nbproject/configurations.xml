@@ -8,6 +8,9 @@
     <logicalFolder name="ResourceFiles"
                    displayName="Resource Files"
                    projectFiles="true">
+      <itemPath>HelloForm.cpp</itemPath>
+      <itemPath>HelloForm.h</itemPath>
+      <itemPath>HelloForm.ui</itemPath>
     </logicalFolder>
     <logicalFolder name="SourceFiles"
                    displayName="Source Files"
@@ -26,9 +29,6 @@
                    kind="IMPORTANT_FILES_FOLDER">
       <itemPath>Makefile</itemPath>
     </logicalFolder>
-    <itemPath>formulari.cpp</itemPath>
-    <itemPath>formulari.h</itemPath>
-    <itemPath>formulari.ui</itemPath>
   </logicalFolder>
   <projectmakefile>Makefile</projectmakefile>
   <confs>
@@ -50,7 +50,7 @@
         </ccTool>
         <linkerTool>
           <linkerLibItems>
-            <linkerOptionItem>-I/usr/local/include/opencv -L/usr/local/lib -lopencv_core -lopencv_objdetect -lopencv_highgui -lopencv_features2d -lopencv_legacy -lopencv_imgproc -lopencv_contrib -lopencv_nonfree </linkerOptionItem>
+            <linkerOptionItem>-L/usr/local/include/opencv -L/usr/local/lib -L/opt/local/lib  -lopencv_core -lopencv_objdetect -lopencv_highgui -lopencv_features2d -lopencv_legacy -lopencv_imgproc -lopencv_contrib -lopencv_nonfree</linkerOptionItem>
           </linkerLibItems>
         </linkerTool>
       </compileType>

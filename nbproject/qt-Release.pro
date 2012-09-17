@@ -2,15 +2,15 @@
 # Use project properties -> Build -> Qt -> Expert -> Custom Definitions.
 TEMPLATE = app
 DESTDIR = dist/Release/GNU-MacOSX
-TARGET = QtApplication_1
+TARGET = MatchingArtImages
 VERSION = 1.0.0
 CONFIG -= debug_and_release app_bundle lib_bundle
 CONFIG += release 
 PKGCONFIG +=
 QT = core gui
-SOURCES += main.cpp formulari.cpp matching_to_many_images.cpp
-HEADERS += formulari.h
-FORMS += formulari.ui
+SOURCES += HelloForm.cpp main.cpp matching_to_many_images.cpp
+HEADERS += HelloForm.h
+FORMS += HelloForm.ui
 RESOURCES +=
 TRANSLATIONS +=
 OBJECTS_DIR = build/Release/GNU-MacOSX

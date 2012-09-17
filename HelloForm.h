@@ -15,6 +15,8 @@ class HelloForm : public QDialog {
 public:
     HelloForm();
     virtual ~HelloForm();
+public slots:
+    void textChanged(const QString& text);    
 private:
     Ui::HelloForm widget;
 };

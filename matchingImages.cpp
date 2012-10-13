@@ -8,32 +8,24 @@
 using namespace cv;
 using namespace std;
 
-
-//    const string defaultDetectorType = "SURF";
-//    const string defaultDescriptorType = "SURF";
-//    const string defaultMatcherType = "FlannBased";
-//    const string defaultQueryImageName = "/Users/xescriche/Desktop/images/tapies/Sabata_1995_Antoni_T_pies creu.jpg";
-//    const string defaultFileWithTrainImages = "/Users/xescriche/Desktop/images/tapies/trainImages.txt";
-//    const string defaultDirToSaveResImages = "/Users/xescriche/Desktop/images/tapies/results";
-
 static void printPrompt(const string& applName) {
     cout << "/*\n"
-            << " * This is a sample on matching descriptors detected on one image to descriptors detected in image set.\n"
-            << " * So we have one query image and several train images. For each keypoint descriptor of query image\n"
-            << " * the one nearest train descriptor is found the entire collection of train images. To visualize the result\n"
-            << " * of matching we save images, each of which combines query and train image with matches between them (if they exist).\n"
-            << " * Match is drawn as line between corresponding points. Count of all matches is equel to count of\n"
-            << " * query keypoints, so we have the same count of lines in all set of result images (but not for each result\n"
-            << " * (train) image).\n"
-            << " */\n" << endl;
+         << " * This is a sample on matching descriptors detected on one image to descriptors detected in image set.\n"
+         << " * So we have one query image and several train images. For each keypoint descriptor of query image\n"
+         << " * the one nearest train descriptor is found the entire collection of train images. To visualize the result\n"
+         << " * of matching we save images, each of which combines query and train image with matches between them (if they exist).\n"
+         << " * Match is drawn as line between corresponding points. Count of all matches is equel to count of\n"
+         << " * query keypoints, so we have the same count of lines in all set of result images (but not for each result\n"
+         << " * (train) image).\n"
+         << " */\n" << endl;
 
     cout << endl << "Format:\n" << endl;
     cout << "./" << applName << " [detectorType] [descriptorType] [matcherType] [queryImage] [fileWithTrainImages] [dirToSaveResImages]" << endl;
     cout << endl;
 
     cout << "\nExample:" << endl
-            << "./" << applName << " " << "SURF" << " " << "SURF" << " " << "FlannBased" << " "
-            << "/Users/example.jpg" << " " << "/Users/example.txt" << " " << "/Users/user1/results" << endl;
+         << "./" << applName << " " << "SURF" << " " << "SURF" << " " << "FlannBased" << " "
+         << "/Users/example.jpg" << " " << "/Users/example.txt" << " " << "/Users/user1/results" << endl;
 }
 
 static void maskMatchesByTrainImgIdx(const vector<DMatch>& matches, int trainImgIdx, vector<char>& mask) {
@@ -69,10 +61,7 @@ static void readTrainFilenames(const string& filename, string& dirName, vector<s
     file.close();
 }
 
-static bool createDetectorDescriptorMatcher(const string& detectorType, const string& descriptorType, const string& matcherType,
-        Ptr<FeatureDetector>& featureDetector,
-        Ptr<DescriptorExtractor>& descriptorExtractor,
-        Ptr<DescriptorMatcher>& descriptorMatcher) {
+static bool createDetectorDescriptorMatcher(const string& detectorType, const string& descriptorType, const string& matcherType,Ptr<FeatureDetector>& featureDetector,Ptr<DescriptorExtractor>& descriptorExtractor,Ptr<DescriptorMatcher>& descriptorMatcher) {
     cout << "< Creating feature detector, descriptor extractor and descriptor matcher ..." << endl;
     featureDetector = FeatureDetector::create(detectorType);
     descriptorExtractor = DescriptorExtractor::create(descriptorType);
@@ -86,8 +75,7 @@ static bool createDetectorDescriptorMatcher(const string& detectorType, const st
     return isCreated;
 }
 
-static bool readImages(const string& queryImageName, const string& trainFilename,
-        Mat& queryImage, vector <Mat>& trainImages, vector<string>& trainImageNames) {
+static bool readImages(const string& queryImageName, const string& trainFilename,Mat& queryImage, vector <Mat>& trainImages, vector<string>& trainImageNames) {
     cout << "< Reading the images..." << endl;
     queryImage = imread(queryImageName, CV_LOAD_IMAGE_GRAYSCALE);
     if (queryImage.empty()) {
@@ -120,18 +108,14 @@ static bool readImages(const string& queryImageName, const string& trainFilename
     return true;
 }
 
-static void detectKeypoints(const Mat& queryImage, vector<KeyPoint>& queryKeypoints,
-        const vector<Mat>& trainImages, vector<vector<KeyPoint> >& trainKeypoints,
-        Ptr<FeatureDetector>& featureDetector) {
+static void detectKeypoints(const Mat& queryImage, vector<KeyPoint>& queryKeypoints,const vector<Mat>& trainImages, vector<vector<KeyPoint> >& trainKeypoints,Ptr<FeatureDetector>& featureDetector) {
     cout << endl << "< Extracting keypoints from images..." << endl;
     featureDetector->detect(queryImage, queryKeypoints);
     featureDetector->detect(trainImages, trainKeypoints);
     cout << ">" << endl;
 }
 
-static void computeDescriptors(const Mat& queryImage, vector<KeyPoint>& queryKeypoints, Mat& queryDescriptors,
-        const vector<Mat>& trainImages, vector<vector<KeyPoint> >& trainKeypoints, vector<Mat>& trainDescriptors,
-        Ptr<DescriptorExtractor>& descriptorExtractor) {
+static void computeDescriptors(const Mat& queryImage, vector<KeyPoint>& queryKeypoints, Mat& queryDescriptors,const vector<Mat>& trainImages, vector<vector<KeyPoint> >& trainKeypoints, vector<Mat>& trainDescriptors,Ptr<DescriptorExtractor>& descriptorExtractor) {
     cout << "< Computing descriptors for keypoints..." << endl;
     descriptorExtractor->compute(queryImage, queryKeypoints, queryDescriptors);
     descriptorExtractor->compute(trainImages, trainKeypoints, trainDescriptors);
@@ -144,8 +128,7 @@ static void computeDescriptors(const Mat& queryImage, vector<KeyPoint>& queryKey
     cout << ">" << endl;
 }
 
-static void matchDescriptors(const Mat& queryDescriptors, const vector<Mat>& trainDescriptors,
-        vector<DMatch>& matches, Ptr<DescriptorMatcher>& descriptorMatcher) {
+static void matchDescriptors(const Mat& queryDescriptors, const vector<Mat>& trainDescriptors, vector<DMatch>& matches, Ptr<DescriptorMatcher>& descriptorMatcher) {
     cout << "< Set train descriptors collection in the matcher and match query descriptors to them..." << endl;
     TickMeter tm;
 
@@ -167,9 +150,7 @@ static void matchDescriptors(const Mat& queryDescriptors, const vector<Mat>& tra
     cout << ">" << endl;
 }
 
-static void saveResultImages(const Mat& queryImage, const vector<KeyPoint>& queryKeypoints,
-        const vector<Mat>& trainImages, const vector<vector<KeyPoint> >& trainKeypoints,
-        const vector<DMatch>& matches, const vector<string>& trainImagesNames, const string& resultDir) {
+static void saveResultImages(const Mat& queryImage, const vector<KeyPoint>& queryKeypoints,const vector<Mat>& trainImages, const vector<vector<KeyPoint> >& trainKeypoints, const vector<DMatch>& matches, const vector<string>& trainImagesNames, const string& resultDir) {
     cout << "< Save results..." << endl;
     Mat drawImg;
     vector<char> mask;
@@ -187,14 +168,6 @@ static void saveResultImages(const Mat& queryImage, const vector<KeyPoint>& quer
 }
 
 int computeMatching(string detectorType, string descriptorType, string matcherType, string queryImageName, string fileWithTrainImages, string dirToSaveResImages) {
-    
-//    const string defaultDetectorType = "SURF";
-//    const string defaultDescriptorType = "SURF";
-//    const string defaultMatcherType = "FlannBased";
-//    const string defaultQueryImageName = "/Users/xescriche/Desktop/images/tapies/Sabata_1995_Antoni_T_pies creu.jpg";
-//    const string defaultFileWithTrainImages = "/Users/xescriche/Desktop/images/tapies/trainImages.txt";
-//    const string defaultDirToSaveResImages = "/Users/xescriche/Desktop/images/tapies/results";
-
     Ptr<FeatureDetector> featureDetector;
     Ptr<DescriptorExtractor> descriptorExtractor;
     Ptr<DescriptorMatcher> descriptorMatcher;
@@ -218,14 +191,11 @@ int computeMatching(string detectorType, string descriptorType, string matcherTy
 
     Mat queryDescriptors;
     vector<Mat> trainDescriptors;
-    computeDescriptors(queryImage, queryKeypoints, queryDescriptors,
-            trainImages, trainKeypoints, trainDescriptors,
-            descriptorExtractor);
+    computeDescriptors(queryImage, queryKeypoints, queryDescriptors,trainImages, trainKeypoints, trainDescriptors,descriptorExtractor);
 
     vector<DMatch> matches;
     matchDescriptors(queryDescriptors, trainDescriptors, matches, descriptorMatcher);
-
-    saveResultImages(queryImage, queryKeypoints, trainImages, trainKeypoints,
-            matches, trainImagesNames, dirToSaveResImages);
+    saveResultImages(queryImage, queryKeypoints, trainImages, trainKeypoints,matches, trainImagesNames, dirToSaveResImages);
+    
     return 0;
 }

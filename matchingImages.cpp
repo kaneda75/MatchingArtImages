@@ -8,12 +8,13 @@
 using namespace cv;
 using namespace std;
 
-const string defaultDetectorType = "SURF";
-const string defaultDescriptorType = "SURF";
-const string defaultMatcherType = "FlannBased";
-const string defaultQueryImageName = "/Users/xescriche/Desktop/images/tapies/Sabata_1995_Antoni_T_pies creu.jpg";
-const string defaultFileWithTrainImages = "/Users/xescriche/Desktop/images/tapies/trainImages.txt";
-const string defaultDirToSaveResImages = "/Users/xescriche/Desktop/images/tapies/results";
+
+//    const string defaultDetectorType = "SURF";
+//    const string defaultDescriptorType = "SURF";
+//    const string defaultMatcherType = "FlannBased";
+//    const string defaultQueryImageName = "/Users/xescriche/Desktop/images/tapies/Sabata_1995_Antoni_T_pies creu.jpg";
+//    const string defaultFileWithTrainImages = "/Users/xescriche/Desktop/images/tapies/trainImages.txt";
+//    const string defaultDirToSaveResImages = "/Users/xescriche/Desktop/images/tapies/results";
 
 static void printPrompt(const string& applName) {
     cout << "/*\n"
@@ -31,8 +32,8 @@ static void printPrompt(const string& applName) {
     cout << endl;
 
     cout << "\nExample:" << endl
-            << "./" << applName << " " << defaultDetectorType << " " << defaultDescriptorType << " " << defaultMatcherType << " "
-            << defaultQueryImageName << " " << defaultFileWithTrainImages << " " << defaultDirToSaveResImages << endl;
+            << "./" << applName << " " << "SURF" << " " << "SURF" << " " << "FlannBased" << " "
+            << "/Users/example.jpg" << " " << "/Users/example.txt" << " " << "/Users/user1/results" << endl;
 }
 
 static void maskMatchesByTrainImgIdx(const vector<DMatch>& matches, int trainImgIdx, vector<char>& mask) {
@@ -185,33 +186,21 @@ static void saveResultImages(const Mat& queryImage, const vector<KeyPoint>& quer
     cout << ">" << endl;
 }
 
-int main(int argc, char** argv) {
-    string detectorType = defaultDetectorType;
-    string descriptorType = defaultDescriptorType;
-    string matcherType = defaultMatcherType;
-    string queryImageName = defaultQueryImageName;
-    string fileWithTrainImages = defaultFileWithTrainImages;
-    string dirToSaveResImages = defaultDirToSaveResImages;
-
-    if (argc != 7 && argc != 1) {
-        printPrompt(argv[0]);
-        return -1;
-    }
-
-    if (argc != 1) {
-        detectorType = argv[1];
-        descriptorType = argv[2];
-        matcherType = argv[3];
-        queryImageName = argv[4];
-        fileWithTrainImages = argv[5];
-        dirToSaveResImages = argv[6];
-    }
+int computeMatching(string detectorType, string descriptorType, string matcherType, string queryImageName, string fileWithTrainImages, string dirToSaveResImages) {
+    
+//    const string defaultDetectorType = "SURF";
+//    const string defaultDescriptorType = "SURF";
+//    const string defaultMatcherType = "FlannBased";
+//    const string defaultQueryImageName = "/Users/xescriche/Desktop/images/tapies/Sabata_1995_Antoni_T_pies creu.jpg";
+//    const string defaultFileWithTrainImages = "/Users/xescriche/Desktop/images/tapies/trainImages.txt";
+//    const string defaultDirToSaveResImages = "/Users/xescriche/Desktop/images/tapies/results";
 
     Ptr<FeatureDetector> featureDetector;
     Ptr<DescriptorExtractor> descriptorExtractor;
     Ptr<DescriptorMatcher> descriptorMatcher;
+    
     if (!createDetectorDescriptorMatcher(detectorType, descriptorType, matcherType, featureDetector, descriptorExtractor, descriptorMatcher)) {
-        printPrompt(argv[0]);
+        printPrompt(detectorType);
         return -1;
     }
 
@@ -219,7 +208,7 @@ int main(int argc, char** argv) {
     vector<Mat> trainImages;
     vector<string> trainImagesNames;
     if (!readImages(queryImageName, fileWithTrainImages, queryImage, trainImages, trainImagesNames)) {
-        printPrompt(argv[0]);
+        printPrompt(detectorType);
         return -1;
     }
 

@@ -16,7 +16,8 @@
                    displayName="Source Files"
                    projectFiles="true">
       <itemPath>main.cpp</itemPath>
-      <itemPath>matching_to_many_images.cpp</itemPath>
+      <itemPath>matchingImages.cpp</itemPath>
+      <itemPath>matchingImages.hpp</itemPath>
     </logicalFolder>
     <logicalFolder name="TestFiles"
                    displayName="Test Files"

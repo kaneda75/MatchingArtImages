@@ -6,6 +6,7 @@
  */
 
 #include "HelloForm.h"
+#include "matchingImages.hpp"
 
 HelloForm::HelloForm() {
     widget.setupUi(this);
@@ -23,7 +24,15 @@ void HelloForm::textChanged(const QString& text) {
     }
 }
 
-void HelloForm::on_pushButton_clicked()
-{
-        widget.helloEdit->setText(widget.comboBoxDetectorType->currentText());
+void HelloForm::on_pushButton_clicked() {
+    widget.helloEdit->setText(widget.comboBoxDetectorType->currentText());
+
+    const string defaultDetectorType = "SURF";
+    const string defaultDescriptorType = "SURF";
+    const string defaultMatcherType = "FlannBased";
+    const string defaultQueryImageName = "//Users/xescriche/Documents/MASTER LINUX/PFM/images/tapies/Sabata_1995_Antoni_T_pies creu.jpg";
+    const string defaultFileWithTrainImages = "//Users/xescriche/Documents/MASTER LINUX/PFM/images/tapies/trainImages.txt";
+    const string defaultDirToSaveResImages = "//Users/xescriche/Documents/MASTER LINUX/PFM/images/results";
+
+    computeMatching(defaultDetectorType, defaultDescriptorType, defaultMatcherType, defaultQueryImageName, defaultFileWithTrainImages, defaultDirToSaveResImages);
 }

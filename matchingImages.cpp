@@ -62,7 +62,7 @@ static void readTrainFilenames(const string& filename, string& dirName, vector<s
 }
 
 static bool createDetectorDescriptorMatcher(const string& detectorType, const string& descriptorType, const string& matcherType,Ptr<FeatureDetector>& featureDetector,Ptr<DescriptorExtractor>& descriptorExtractor,Ptr<DescriptorMatcher>& descriptorMatcher) {
-    cout << "< Creating feature detector, descriptor extractor and descriptor matcher ..." << endl;
+    cout << "< Creant detector, descriptor i matcher ..." << endl;
     featureDetector = FeatureDetector::create(detectorType);
     descriptorExtractor = DescriptorExtractor::create(descriptorType);
     descriptorMatcher = DescriptorMatcher::create(matcherType);
@@ -70,53 +70,55 @@ static bool createDetectorDescriptorMatcher(const string& detectorType, const st
 
     bool isCreated = !(featureDetector.empty() || descriptorExtractor.empty() || descriptorMatcher.empty());
     if (!isCreated)
-        cout << "Can not create feature detector or descriptor extractor or descriptor matcher of given types." << endl << ">" << endl;
+//        cout << "Can not create feature detector or descriptor extractor or descriptor matcher of given types." << endl << ">" << endl;
+          cout << "No es pot crear el detector, el descriptor o el matcher." << endl << ">" << endl;
+
 
     return isCreated;
 }
 
-static bool readImages(const string& queryImageName, const string& trainFilename,Mat& queryImage, vector <Mat>& trainImages, vector<string>& trainImageNames) {
-    cout << "< Reading the images..." << endl;
-    queryImage = imread(queryImageName, CV_LOAD_IMAGE_GRAYSCALE);
+static bool readImages(const string& queryImageName, const string& trainFilename,Mat& queryImage, vector <Mat>& trainImages, vector<string>& trainImageNames, int color) {
+    cout << "< Llegint les imatges..." << endl;
+    queryImage = imread(queryImageName, color);
     if (queryImage.empty()) {
-        cout << "Query image can not be read." << endl << ">" << endl;
+        cout << "La imatge consulta no pot ser llegida." << endl << ">" << endl;
         return false;
     }
     string trainDirName;
     readTrainFilenames(trainFilename, trainDirName, trainImageNames);
     if (trainImageNames.empty()) {
-        cout << "Train image filenames can not be read." << endl << ">" << endl;
+        cout << "Les imatges a comparar no poden ser llegides." << endl << ">" << endl;
         return false;
     }
     int readImageCount = 0;
     for (size_t i = 0; i < trainImageNames.size(); i++) {
         string filename = trainDirName + trainImageNames[i];
-        Mat img = imread(filename, CV_LOAD_IMAGE_GRAYSCALE);
+        Mat img = imread(filename, color);
         if (img.empty())
-            cout << "Train image " << filename << " can not be read." << endl;
+            cout << "La imatge a comparar " << filename << " no pot ser llegida." << endl;
         else
             readImageCount++;
         trainImages.push_back(img);
     }
     if (!readImageCount) {
-        cout << "All train images can not be read." << endl << ">" << endl;
+        cout << "Totes les imatges a comparar no poden ser llegides." << endl << ">" << endl;
         return false;
     } else
-        cout << readImageCount << " train images were read." << endl;
+        cout << readImageCount << " imatges a comparar llegides." << endl;
     cout << ">" << endl;
 
     return true;
 }
 
 static void detectKeypoints(const Mat& queryImage, vector<KeyPoint>& queryKeypoints,const vector<Mat>& trainImages, vector<vector<KeyPoint> >& trainKeypoints,Ptr<FeatureDetector>& featureDetector) {
-    cout << endl << "< Extracting keypoints from images..." << endl;
+    cout << endl << "< Extraent descriptors de les imatges..." << endl;
     featureDetector->detect(queryImage, queryKeypoints);
     featureDetector->detect(trainImages, trainKeypoints);
     cout << ">" << endl;
 }
 
 static void computeDescriptors(const Mat& queryImage, vector<KeyPoint>& queryKeypoints, Mat& queryDescriptors,const vector<Mat>& trainImages, vector<vector<KeyPoint> >& trainKeypoints, vector<Mat>& trainDescriptors,Ptr<DescriptorExtractor>& descriptorExtractor) {
-    cout << "< Computing descriptors for keypoints..." << endl;
+    cout << "< Computant descriptors..." << endl;
     descriptorExtractor->compute(queryImage, queryKeypoints, queryDescriptors);
     descriptorExtractor->compute(trainImages, trainKeypoints, trainDescriptors);
 
@@ -124,12 +126,14 @@ static void computeDescriptors(const Mat& queryImage, vector<KeyPoint>& queryKey
     for (vector<Mat>::const_iterator tdIter = trainDescriptors.begin(); tdIter != trainDescriptors.end(); tdIter++)
         totalTrainDesc += tdIter->rows;
 
-    cout << "Query descriptors count: " << queryDescriptors.rows << "; Total train descriptors count: " << totalTrainDesc << endl;
+    cout << "Descriptors consulta num: " << queryDescriptors.rows << "; Total descriptors consulta num: " << totalTrainDesc << endl;
     cout << ">" << endl;
 }
 
 static void matchDescriptors(const Mat& queryDescriptors, const vector<Mat>& trainDescriptors, vector<DMatch>& matches, Ptr<DescriptorMatcher>& descriptorMatcher) {
-    cout << "< Set train descriptors collection in the matcher and match query descriptors to them..." << endl;
+//    cout << "< Set train descriptors collection in the matcher and match query descriptors to them..." << endl;
+    cout << "< Prepara descriptors de la colecció d'imatges a comparar i compara els descriptors consulta amb ells..." << endl;
+    
     TickMeter tm;
 
     tm.start();
@@ -145,13 +149,13 @@ static void matchDescriptors(const Mat& queryDescriptors, const vector<Mat>& tra
 
     CV_Assert(queryDescriptors.rows == (int) matches.size() || matches.empty());
 
-    cout << "Number of matches: " << matches.size() << endl;
-    cout << "Build time: " << buildTime << " ms; Match time: " << matchTime << " ms" << endl;
+    cout << "Numero de coincidencies: " << matches.size() << endl;
+    cout << "Temps de compilacio/build: " << buildTime << " ms; Temps de comparació: " << matchTime << " ms" << endl;
     cout << ">" << endl;
 }
 
 static void saveResultImages(const Mat& queryImage, const vector<KeyPoint>& queryKeypoints,const vector<Mat>& trainImages, const vector<vector<KeyPoint> >& trainKeypoints, const vector<DMatch>& matches, const vector<string>& trainImagesNames, const string& resultDir) {
-    cout << "< Save results..." << endl;
+    cout << "< Guardant els resultats..." << endl;
     Mat drawImg;
     vector<char> mask;
     for (size_t i = 0; i < trainImages.size(); i++) {
@@ -161,13 +165,13 @@ static void saveResultImages(const Mat& queryImage, const vector<KeyPoint>& quer
                     matches, drawImg, Scalar(255, 0, 0), Scalar(0, 255, 255), mask);
             string filename = resultDir + "/res_" + trainImagesNames[i];
             if (!imwrite(filename, drawImg))
-                cout << "Image " << filename << " can not be saved (may be because directory " << resultDir << " does not exist)." << endl;
+                cout << "L'imatge " << filename << " no pot ser guardada (pot ser que el directori " << resultDir << " no existeixi)." << endl;
         }
     }
     cout << ">" << endl;
 }
 
-int computeMatching(string detectorType, string descriptorType, string matcherType, string queryImageName, string fileWithTrainImages, string dirToSaveResImages) {
+int computeMatching(string detectorType, string descriptorType, string matcherType, string queryImageName, string fileWithTrainImages, string dirToSaveResImages, int color) {
     Ptr<FeatureDetector> featureDetector;
     Ptr<DescriptorExtractor> descriptorExtractor;
     Ptr<DescriptorMatcher> descriptorMatcher;
@@ -180,7 +184,7 @@ int computeMatching(string detectorType, string descriptorType, string matcherTy
     Mat queryImage;
     vector<Mat> trainImages;
     vector<string> trainImagesNames;
-    if (!readImages(queryImageName, fileWithTrainImages, queryImage, trainImages, trainImagesNames)) {
+    if (!readImages(queryImageName, fileWithTrainImages, queryImage, trainImages, trainImagesNames, color)) {
         printPrompt(detectorType);
         return -1;
     }

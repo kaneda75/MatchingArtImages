@@ -6,55 +6,37 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>386</width>
-    <height>193</height>
+    <width>402</width>
+    <height>195</height>
    </rect>
   </property>
   <property name="windowTitle">
    <string>HelloForm</string>
   </property>
-  <widget class="QLineEdit" name="nameEdit">
-   <property name="geometry">
-    <rect>
-     <x>10</x>
-     <y>30</y>
-     <width>371</width>
-     <height>22</height>
-    </rect>
-   </property>
-  </widget>
-  <widget class="QLineEdit" name="helloEdit">
-   <property name="geometry">
-    <rect>
-     <x>10</x>
-     <y>60</y>
-     <width>371</width>
-     <height>22</height>
-    </rect>
-   </property>
-  </widget>
-  <widget class="QLabel" name="label">
-   <property name="geometry">
-    <rect>
-     <x>10</x>
-     <y>10</y>
-     <width>311</width>
-     <height>16</height>
-    </rect>
-   </property>
-   <property name="text">
-    <string>Enter the name below:</string>
-   </property>
-  </widget>
   <widget class="QComboBox" name="comboBoxDetectorType">
    <property name="geometry">
     <rect>
      <x>160</x>
-     <y>90</y>
+     <y>8</y>
      <width>111</width>
      <height>26</height>
     </rect>
    </property>
+   <item>
+    <property name="text">
+     <string>FAST</string>
+    </property>
+   </item>
+   <item>
+    <property name="text">
+     <string>STAR</string>
+    </property>
+   </item>
+   <item>
+    <property name="text">
+     <string>SIFT</string>
+    </property>
+   </item>
    <item>
     <property name="text">
      <string>SURF</string>
@@ -62,7 +44,132 @@
    </item>
    <item>
     <property name="text">
-     <string>SIFT</string>
+     <string>ORB</string>
+    </property>
+   </item>
+   <item>
+    <property name="text">
+     <string>MSER</string>
+    </property>
+   </item>
+   <item>
+    <property name="text">
+     <string>GFTT</string>
+    </property>
+   </item>
+   <item>
+    <property name="text">
+     <string>HARRIS</string>
+    </property>
+   </item>
+   <item>
+    <property name="text">
+     <string>Dense</string>
+    </property>
+   </item>
+   <item>
+    <property name="text">
+     <string>SimpleBlob</string>
+    </property>
+   </item>
+   <item>
+    <property name="text">
+     <string>GridFAST</string>
+    </property>
+   </item>
+   <item>
+    <property name="text">
+     <string>GridSTAR</string>
+    </property>
+   </item>
+   <item>
+    <property name="text">
+     <string>GridSIFT</string>
+    </property>
+   </item>
+   <item>
+    <property name="text">
+     <string>GridSURF</string>
+    </property>
+   </item>
+   <item>
+    <property name="text">
+     <string>GridORB</string>
+    </property>
+   </item>
+   <item>
+    <property name="text">
+     <string>GridMSER</string>
+    </property>
+   </item>
+   <item>
+    <property name="text">
+     <string>GridGFTT</string>
+    </property>
+   </item>
+   <item>
+    <property name="text">
+     <string>GridHARRIS</string>
+    </property>
+   </item>
+   <item>
+    <property name="text">
+     <string>GridDense</string>
+    </property>
+   </item>
+   <item>
+    <property name="text">
+     <string>GridSimpleBlob</string>
+    </property>
+   </item>
+   <item>
+    <property name="text">
+     <string>PyramidFAST</string>
+    </property>
+   </item>
+   <item>
+    <property name="text">
+     <string>PyramidSTAR</string>
+    </property>
+   </item>
+   <item>
+    <property name="text">
+     <string>PyramidSIFT</string>
+    </property>
+   </item>
+   <item>
+    <property name="text">
+     <string>PyramidSURF</string>
+    </property>
+   </item>
+   <item>
+    <property name="text">
+     <string>PyramidORB</string>
+    </property>
+   </item>
+   <item>
+    <property name="text">
+     <string>PyramidMSER</string>
+    </property>
+   </item>
+   <item>
+    <property name="text">
+     <string>PyramidGFTT</string>
+    </property>
+   </item>
+   <item>
+    <property name="text">
+     <string>PyramidHARRIS</string>
+    </property>
+   </item>
+   <item>
+    <property name="text">
+     <string>PyramidDense</string>
+    </property>
+   </item>
+   <item>
+    <property name="text">
+     <string>PyramidSimpleBlob</string>
     </property>
    </item>
   </widget>
@@ -70,11 +177,16 @@
    <property name="geometry">
     <rect>
      <x>160</x>
-     <y>120</y>
+     <y>36</y>
      <width>111</width>
      <height>26</height>
     </rect>
    </property>
+   <item>
+    <property name="text">
+     <string>SIFT</string>
+    </property>
+   </item>
    <item>
     <property name="text">
      <string>SURF</string>
@@ -82,7 +194,32 @@
    </item>
    <item>
     <property name="text">
-     <string>SIFT</string>
+     <string>ORB</string>
+    </property>
+   </item>
+   <item>
+    <property name="text">
+     <string>BRIEF</string>
+    </property>
+   </item>
+   <item>
+    <property name="text">
+     <string>OpponentSIFT</string>
+    </property>
+   </item>
+   <item>
+    <property name="text">
+     <string>OpponentSURF</string>
+    </property>
+   </item>
+   <item>
+    <property name="text">
+     <string>OpponentORB</string>
+    </property>
+   </item>
+   <item>
+    <property name="text">
+     <string>OpponentBRIEF</string>
     </property>
    </item>
   </widget>
@@ -90,7 +227,7 @@
    <property name="geometry">
     <rect>
      <x>21</x>
-     <y>96</y>
+     <y>14</y>
      <width>141</width>
      <height>16</height>
     </rect>
@@ -103,7 +240,7 @@
    <property name="geometry">
     <rect>
      <x>20</x>
-     <y>122</y>
+     <y>38</y>
      <width>141</width>
      <height>20</height>
     </rect>
@@ -115,8 +252,8 @@
   <widget class="QPushButton" name="pushButton">
    <property name="geometry">
     <rect>
-     <x>260</x>
-     <y>160</y>
+     <x>270</x>
+     <y>150</y>
      <width>114</width>
      <height>32</height>
     </rect>
@@ -124,6 +261,102 @@
    <property name="text">
     <string>Matching</string>
    </property>
+  </widget>
+  <widget class="QLabel" name="label_4">
+   <property name="geometry">
+    <rect>
+     <x>21</x>
+     <y>66</y>
+     <width>141</width>
+     <height>20</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>Tipus de matcher</string>
+   </property>
+  </widget>
+  <widget class="QComboBox" name="comboBoxMatcherType">
+   <property name="geometry">
+    <rect>
+     <x>160</x>
+     <y>64</y>
+     <width>111</width>
+     <height>26</height>
+    </rect>
+   </property>
+   <item>
+    <property name="text">
+     <string>BruteForce</string>
+    </property>
+   </item>
+   <item>
+    <property name="text">
+     <string>BruteForce-L1</string>
+    </property>
+   </item>
+   <item>
+    <property name="text">
+     <string>BruteForce-Hamming</string>
+    </property>
+   </item>
+   <item>
+    <property name="text">
+     <string>BruteForce-Hamming(2)</string>
+    </property>
+   </item>
+   <item>
+    <property name="text">
+     <string>FlannBased</string>
+    </property>
+   </item>
+  </widget>
+  <widget class="QLabel" name="label_5">
+   <property name="geometry">
+    <rect>
+     <x>24</x>
+     <y>92</y>
+     <width>141</width>
+     <height>20</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>Tipus de color</string>
+   </property>
+  </widget>
+  <widget class="QComboBox" name="comboBoxColor">
+   <property name="geometry">
+    <rect>
+     <x>160</x>
+     <y>90</y>
+     <width>231</width>
+     <height>26</height>
+    </rect>
+   </property>
+   <item>
+    <property name="text">
+     <string>CV_LOAD_IMAGE_UNCHANGED</string>
+    </property>
+   </item>
+   <item>
+    <property name="text">
+     <string>CV_LOAD_IMAGE_GRAYSCALE</string>
+    </property>
+   </item>
+   <item>
+    <property name="text">
+     <string>CV_LOAD_IMAGE_COLOR</string>
+    </property>
+   </item>
+   <item>
+    <property name="text">
+     <string>CV_LOAD_IMAGE_ANYDEPTH</string>
+    </property>
+   </item>
+   <item>
+    <property name="text">
+     <string>CV_LOAD_IMAGE_ANYCOLOR</string>
+    </property>
+   </item>
   </widget>
  </widget>
  <resources/>

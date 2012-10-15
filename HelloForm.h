@@ -16,7 +16,7 @@ public:
     HelloForm();
     virtual ~HelloForm();
 public slots:
-    void textChanged(const QString& text);   
+//    void textChanged(const QString& text);   
     void on_pushButton_clicked();
     
 private:

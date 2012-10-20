@@ -35,23 +35,48 @@ void HelloForm::on_pushButton_clicked() {
     string defaultDirToSaveResImages = "//Users/xescriche/Documents/MASTER LINUX/PFM/images/results";
 
     int color;
-    if (widget.comboBoxColor->currentText().toStdString().compare("CV_LOAD_IMAGE_UNCHANGED") != 0) {
+    if (widget.comboBoxColor->currentText().toStdString().compare("CV_LOAD_IMAGE_UNCHANGED") == 0) {
         color = -1;
-    } else if (widget.comboBoxColor->currentText().toStdString().compare("CV_LOAD_IMAGE_GRAYSCALE") != 0) {
+    } else if (widget.comboBoxColor->currentText().toStdString().compare("CV_LOAD_IMAGE_GRAYSCALE") == 0) {
         color = 0;
-    } else if (widget.comboBoxColor->currentText().toStdString().compare("CV_LOAD_IMAGE_COLOR") != 0) {
+    } else if (widget.comboBoxColor->currentText().toStdString().compare("CV_LOAD_IMAGE_COLOR") == 0) {
         color = 1;
-    } else if (widget.comboBoxColor->currentText().toStdString().compare("CV_LOAD_IMAGE_ANYDEPTH") != 0) {
+    } else if (widget.comboBoxColor->currentText().toStdString().compare("CV_LOAD_IMAGE_ANYDEPTH") == 0) {
         color = 2;
-    } else if (widget.comboBoxColor->currentText().toStdString().compare("CV_LOAD_IMAGE_ANYCOLOR") != 0) {
+    } else if (widget.comboBoxColor->currentText().toStdString().compare("CV_LOAD_IMAGE_ANYCOLOR") == 0) {
         color = 4;
     }
+    
+    if (widget.comboBoxDetectorType->currentText().toStdString().compare("<Tots>") == 0) {
+        for (int i = 1; i < 30; i++) {
+            if (widget.comboBoxDescriptorType->currentText().toStdString().compare("<Tots>") == 0) {
+                for (int j = 1; j < 8; j++) {
+                    if (widget.comboBoxMatcherType->currentText().toStdString().compare("<Tots>") == 0) {
+                            for (int k = 1; k < 5; k++) {
+                                try {
+                                    computeMatching(widget.comboBoxDetectorType->itemText(i).toStdString(),
+                                            widget.comboBoxDescriptorType->itemText(j).toStdString(),
+                                            widget.comboBoxMatcherType->itemText(k).toStdString(),
+                                            defaultQueryImageName,
+                                            defaultFileWithTrainImages,
+                                            defaultDirToSaveResImages,
+                                            color);
+                                 } catch(Exception & e) {
+                                     cout << "ERROR: " + e.err << endl;
+                                 }
 
-    computeMatching(widget.comboBoxDetectorType->currentText().toStdString(), 
-            widget.comboBoxDescriptorType->currentText().toStdString(), 
-            widget.comboBoxMatcherType->currentText().toStdString(), 
-            defaultQueryImageName, 
-            defaultFileWithTrainImages, 
-            defaultDirToSaveResImages,
-            color);
+                            }
+                    }      
+                }
+            }
+        }
+    } else {
+        computeMatching(widget.comboBoxDetectorType->currentText().toStdString(),
+                widget.comboBoxDescriptorType->currentText().toStdString(),
+                widget.comboBoxMatcherType->currentText().toStdString(),
+                defaultQueryImageName,
+                defaultFileWithTrainImages,
+                defaultDirToSaveResImages,
+                color);
+    }
 }

@@ -154,7 +154,7 @@ static void matchDescriptors(const Mat& queryDescriptors, const vector<Mat>& tra
     cout << ">" << endl;
 }
 
-static void saveResultImages(const Mat& queryImage, const vector<KeyPoint>& queryKeypoints,const vector<Mat>& trainImages, const vector<vector<KeyPoint> >& trainKeypoints, const vector<DMatch>& matches, const vector<string>& trainImagesNames, const string& resultDir) {
+static void saveResultImages(const Mat& queryImage, const vector<KeyPoint>& queryKeypoints,const vector<Mat>& trainImages, const vector<vector<KeyPoint> >& trainKeypoints, const vector<DMatch>& matches, const vector<string>& trainImagesNames, const string& resultDir, string nomArxiu) {
     cout << "< Guardant els resultats..." << endl;
     Mat drawImg;
     vector<char> mask;
@@ -163,7 +163,7 @@ static void saveResultImages(const Mat& queryImage, const vector<KeyPoint>& quer
             maskMatchesByTrainImgIdx(matches, (int) i, mask);
             drawMatches(queryImage, queryKeypoints, trainImages[i], trainKeypoints[i],
                     matches, drawImg, Scalar(255, 0, 0), Scalar(0, 255, 255), mask);
-            string filename = resultDir + "/res_" + trainImagesNames[i];
+            string filename = resultDir + "/res_" + nomArxiu + "_" + trainImagesNames[i];
             if (!imwrite(filename, drawImg))
                 cout << "L'imatge " << filename << " no pot ser guardada (pot ser que el directori " << resultDir << " no existeixi)." << endl;
         }
@@ -199,7 +199,7 @@ int computeMatching(string detectorType, string descriptorType, string matcherTy
 
     vector<DMatch> matches;
     matchDescriptors(queryDescriptors, trainDescriptors, matches, descriptorMatcher);
-    saveResultImages(queryImage, queryKeypoints, trainImages, trainKeypoints,matches, trainImagesNames, dirToSaveResImages);
+    saveResultImages(queryImage, queryKeypoints, trainImages, trainKeypoints,matches, trainImagesNames, dirToSaveResImages, detectorType + "_" + descriptorType + "_" + matcherType);
     
     return 0;
 }

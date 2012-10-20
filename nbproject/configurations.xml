@@ -15,6 +15,8 @@
     <logicalFolder name="SourceFiles"
                    displayName="Source Files"
                    projectFiles="true">
+      <itemPath>MyAplication.cpp</itemPath>
+      <itemPath>MyAplication.h</itemPath>
       <itemPath>main.cpp</itemPath>
       <itemPath>matchingImages.cpp</itemPath>
       <itemPath>matchingImages.hpp</itemPath>

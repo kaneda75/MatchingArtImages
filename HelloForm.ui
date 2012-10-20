@@ -24,6 +24,11 @@
    </property>
    <item>
     <property name="text">
+     <string>&lt;Tots&gt;</string>
+    </property>
+   </item>
+   <item>
+    <property name="text">
      <string>FAST</string>
     </property>
    </item>
@@ -184,6 +189,11 @@
    </property>
    <item>
     <property name="text">
+     <string>&lt;Tots&gt;</string>
+    </property>
+   </item>
+   <item>
+    <property name="text">
      <string>SIFT</string>
     </property>
    </item>
@@ -286,6 +296,11 @@
    </property>
    <item>
     <property name="text">
+     <string>&lt;Tots&gt;</string>
+    </property>
+   </item>
+   <item>
+    <property name="text">
      <string>BruteForce</string>
     </property>
    </item>
@@ -334,12 +349,12 @@
    </property>
    <item>
     <property name="text">
-     <string>CV_LOAD_IMAGE_UNCHANGED</string>
+     <string>CV_LOAD_IMAGE_GRAYSCALE</string>
     </property>
    </item>
    <item>
     <property name="text">
-     <string>CV_LOAD_IMAGE_GRAYSCALE</string>
+     <string>CV_LOAD_IMAGE_UNCHANGED</string>
     </property>
    </item>
    <item>

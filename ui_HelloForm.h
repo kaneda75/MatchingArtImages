@@ -1,7 +1,7 @@
 /********************************************************************************
 ** Form generated from reading UI file 'HelloForm.ui'
 **
-** Created: Mon Oct 15 18:13:38 2012
+** Created: Tue Oct 16 18:37:46 2012
 **      by: Qt User Interface Compiler version 4.7.4
 **
 ** WARNING! All changes made in this file will be lost when recompiling UI file!
@@ -78,6 +78,7 @@ public:
         HelloForm->setWindowTitle(QApplication::translate("HelloForm", "HelloForm", 0, QApplication::UnicodeUTF8));
         comboBoxDetectorType->clear();
         comboBoxDetectorType->insertItems(0, QStringList()
+         << QApplication::translate("HelloForm", "<Tots>", 0, QApplication::UnicodeUTF8)
          << QApplication::translate("HelloForm", "FAST", 0, QApplication::UnicodeUTF8)
          << QApplication::translate("HelloForm", "STAR", 0, QApplication::UnicodeUTF8)
          << QApplication::translate("HelloForm", "SIFT", 0, QApplication::UnicodeUTF8)
@@ -111,6 +112,7 @@ public:
         );
         comboBoxDescriptorType->clear();
         comboBoxDescriptorType->insertItems(0, QStringList()
+         << QApplication::translate("HelloForm", "<Tots>", 0, QApplication::UnicodeUTF8)
          << QApplication::translate("HelloForm", "SIFT", 0, QApplication::UnicodeUTF8)
          << QApplication::translate("HelloForm", "SURF", 0, QApplication::UnicodeUTF8)
          << QApplication::translate("HelloForm", "ORB", 0, QApplication::UnicodeUTF8)
@@ -126,6 +128,7 @@ public:
         label_4->setText(QApplication::translate("HelloForm", "Tipus de matcher", 0, QApplication::UnicodeUTF8));
         comboBoxMatcherType->clear();
         comboBoxMatcherType->insertItems(0, QStringList()
+         << QApplication::translate("HelloForm", "<Tots>", 0, QApplication::UnicodeUTF8)
          << QApplication::translate("HelloForm", "BruteForce", 0, QApplication::UnicodeUTF8)
          << QApplication::translate("HelloForm", "BruteForce-L1", 0, QApplication::UnicodeUTF8)
          << QApplication::translate("HelloForm", "BruteForce-Hamming", 0, QApplication::UnicodeUTF8)
@@ -135,8 +138,8 @@ public:
         label_5->setText(QApplication::translate("HelloForm", "Tipus de color", 0, QApplication::UnicodeUTF8));
         comboBoxColor->clear();
         comboBoxColor->insertItems(0, QStringList()
-         << QApplication::translate("HelloForm", "CV_LOAD_IMAGE_UNCHANGED", 0, QApplication::UnicodeUTF8)
          << QApplication::translate("HelloForm", "CV_LOAD_IMAGE_GRAYSCALE", 0, QApplication::UnicodeUTF8)
+         << QApplication::translate("HelloForm", "CV_LOAD_IMAGE_UNCHANGED", 0, QApplication::UnicodeUTF8)
          << QApplication::translate("HelloForm", "CV_LOAD_IMAGE_COLOR", 0, QApplication::UnicodeUTF8)
          << QApplication::translate("HelloForm", "CV_LOAD_IMAGE_ANYDEPTH", 0, QApplication::UnicodeUTF8)
          << QApplication::translate("HelloForm", "CV_LOAD_IMAGE_ANYCOLOR", 0, QApplication::UnicodeUTF8)

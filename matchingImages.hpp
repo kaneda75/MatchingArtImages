@@ -28,7 +28,7 @@ using namespace std;
 //static void computeDescriptors(const Mat& queryImage, vector<KeyPoint>& queryKeypoints, Mat& queryDescriptors,const vector<Mat>& trainImages, vector<vector<KeyPoint> >& trainKeypoints, vector<Mat>& trainDescriptors,Ptr<DescriptorExtractor>& descriptorExtractor);
 //static void matchDescriptors(const Mat& queryDescriptors, const vector<Mat>& trainDescriptors,vector<DMatch>& matches, Ptr<DescriptorMatcher>& descriptorMatcher);
 //static void saveResultImages(const Mat& queryImage, const vector<KeyPoint>& queryKeypoints,const vector<Mat>& trainImages, const vector<vector<KeyPoint> >& trainKeypoints,const vector<DMatch>& matches, const vector<string>& trainImagesNames, const string& resultDir);
-int computeMatching(string detectorType, string descriptorType, string matcherType, string queryImageName, string fileWithTrainImages, string dirToSaveResImages, int color);
+int computeMatching(int & id, string detectorType, string descriptorType, string matcherType, string queryImageName, string fileWithTrainImages, string dirToSaveResImages, int color);
 
 
 #endif	/* MATCHINGIMAGES_HPP */

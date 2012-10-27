@@ -1,7 +1,7 @@
 /********************************************************************************
 ** Form generated from reading UI file 'HelloForm.ui'
 **
-** Created: Tue Oct 16 18:37:46 2012
+** Created: Sat Oct 27 16:58:24 2012
 **      by: Qt User Interface Compiler version 4.7.4
 **
 ** WARNING! All changes made in this file will be lost when recompiling UI file!

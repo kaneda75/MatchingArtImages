@@ -1,7 +1,7 @@
 /****************************************************************************
 ** Meta object code from reading C++ file 'HelloForm.h'
 **
-** Created: Tue Oct 16 18:37:53 2012
+** Created: Sat Oct 27 16:58:31 2012
 **      by: The Qt Meta Object Compiler version 62 (Qt 4.7.4)
 **
 ** WARNING! All changes made in this file will be lost!

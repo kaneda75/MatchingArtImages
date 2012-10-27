@@ -17,6 +17,7 @@
                    projectFiles="true">
       <itemPath>MyAplication.cpp</itemPath>
       <itemPath>MyAplication.h</itemPath>
+      <itemPath>homography.cpp</itemPath>
       <itemPath>main.cpp</itemPath>
       <itemPath>matchingImages.cpp</itemPath>
       <itemPath>matchingImages.hpp</itemPath>
